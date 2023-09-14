@@ -18,7 +18,8 @@ namespace dotnet_matrix_multiplication.Controllers
         [HttpPost("multiply")]
 		public IActionResult Multiply([FromBody]MultiplyRequest request)
 		{
-			return Ok(_matrixOperator.Multiply(request.MatrixA, request.MatrixB));
+			var multiplyResponse = new MultiplyResponse(request.MatrixA, request.MatrixB, _matrixOperator.Multiply(request.MatrixA, request.MatrixB));
+			return Ok(multiplyResponse);
 		}
 	}
 }
