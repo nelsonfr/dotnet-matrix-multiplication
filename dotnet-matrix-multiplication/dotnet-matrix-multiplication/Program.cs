@@ -32,6 +32,8 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
+
 app.UseCors(policy);
 
 app.UseAuthorization();
