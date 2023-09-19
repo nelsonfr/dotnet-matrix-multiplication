@@ -15,7 +15,30 @@ namespace dotnet_matrix_multiplication.Controllers
             _matrixOperator = matrixOperator;
         }
 
-        [HttpPost("multiply")]
+		///<remarks>
+		///Sample request:
+		///
+		///		Post
+		///		{
+		///			"matrixA": {
+		///			"data": [
+		///				[0,1,2],
+		///				[3,4,5]
+		///				]
+		///			},
+		///			"matrixB": {
+		///			"data": [
+		///				[0,1,2],
+		///				[3,4,5],
+		///				[6,7,8]
+		///				]
+		///			}
+		///		}
+		/// </remarks>
+		/// <summary>
+		/// Multiplies two matrices
+		/// </summary>
+		[HttpPost("multiply")]
 		public IActionResult Multiply([FromBody]MultiplyRequest request)
 		{
 			var multiplyResponse = new MultiplyResponse(request.MatrixA, request.MatrixB, _matrixOperator.Multiply(request.MatrixA, request.MatrixB));
